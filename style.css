@@ -572,6 +572,9 @@ header {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-10px); }
 }
+.contact-icons li:hover{
+  animation-play-state: paused;
+}
 /* =========================================
    8. FOOTER
    ========================================= */
