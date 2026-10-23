@@ -1,0 +1,639 @@
+/* =========================================
+   1. GENERAL
+   ========================================= */
+html {
+  scroll-behavior: smooth;      /* نزول وطلوع ناعم بدل القفز */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5fbfc;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 30px 5%;
+  scroll-margin-top: 90px;      /* عشان عنوان القسم ما يختفي ورا القائمة */
+}
+
+section h2 {
+  display: inline-block;
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #00a8cc;
+  margin: 8px 0 0;
+  border-radius: 2px;
+}
+
+/* =========================================
+   2. HEADER / NAVBAR
+   ========================================= */
+header {
+  position: sticky;             /* بتلزق فوق لما تنزلي */
+  top: 0;
+  z-index: 200;                 /* فوق كل العناصر الباقية */
+  background: #0b2545;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+}
+
+.logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+  list-style: none;
+}
+
+.menu a {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 3px;
+  background: #00a8cc;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover {
+  color: #00a8cc;
+  transform: translateY(-3px) scale(1.1);
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.menu a.active {
+  color: #00a8cc;
+}
+
+/* =========================================
+   3. HERO
+   ========================================= */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  min-height: 80vh;
+  padding: 20px 5%;
+  background-color: #f5fbfc;
+}
+
+.hero-text {
+  display: block;
+  flex: 1 1 500px;
+}
+
+.greeting {
+  font-size: 1.6rem;
+  color: #555;
+}
+
+/* كتابة الدور (typing effect) */
+.role {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  color: #00a8cc;
+  border-right: 3px solid #00a8cc;
+  margin: 10px 0;
+  font-weight: bold;
+  width: 0;
+  animation: typing 4s steps(28) forwards,
+             blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 28ch; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.short-info {
+  margin-top: 10px;
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+/* زر تحميل السيرة الذاتية */
+.cv-btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 8px 20px;
+  background: #00a8cc;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cv-btn:hover {
+  background: #0b2545;
+  transform: translateY(-3px);
+}
+
+/* صورة الـ Hero */
+.hero-img-wrap {
+  position: relative;
+  flex: 0 1 300px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.hero-img-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0% -8% -8% 0%;
+  background: #1faac9;
+  border-radius:42% 58% 60% 33% / 54% 38% 77% 50%;
+  z-index: 0;
+  transition: transform 0.4s ease, border-radius 0.6s ease;
+}
+
+.hero-img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.4s ease;
+}
+
+.hero-img-wrap:hover .hero-img {
+  transform: translateY(-10px);
+}
+
+.hero-img-wrap:hover::before {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+/* Hero على الموبايل */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-text {
+    flex: 0 1 auto;
+  }
+
+  .role {
+    font-size: 1.2rem;
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   4. ABOUT + WORKSHOPS
+   ========================================= */
+#about p {
+  max-width: 100%;
+  line-height: 1.6;
+}
+
+.workshops-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.workshops-list li {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: 4px solid #00a8cc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workshops-list li:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.workshops-list img {
+   object-fit: cover; 
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* عند الكبس: يكبر لنص الشاشة تقريباً */
+.workshops-list li:focus,
+.workshops-list li:focus:hover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  transform: none;
+  width: min(50vw, 90vw);
+  height: 50vh;
+  aspect-ratio: auto;
+  z-index: 100;
+  cursor: default;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+  animation: pop 0.3s ease;
+}
+
+.workshops-list li:focus img {
+  object-fit: contain;
+  background: #fff;
+}
+
+@keyframes pop {
+  from { opacity: 0; scale: 0.8; }
+  to   { opacity: 1; scale: 1; }
+}
+
+/* Workshops على الموبايل */
+@media (max-width: 600px) {
+  .workshops-list li:focus,
+  .workshops-list li:focus:hover {
+    width: 90vw;
+  }
+}
+
+/* =========================================
+   5. SKILLS
+   ========================================= */
+#skills {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;       /* العنوان فوق والأيقونات تحته */
+}
+
+#skills h2 {
+  align-self: flex-start;
+}
+
+#skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  margin-top: auto;
+}
+
+#skills li {
+  width: 100px;
+}
+
+#skills a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 16px;
+}
+
+#skills img {
+  width: 90px;
+  height: 100px;
+  object-fit: contain;
+  padding: 18px;
+  background: #fff;
+  border: 4px solid #ddd;
+  border-radius: 60%;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#skills a:hover img {
+  transform: scale(1.25);
+  border-color: #00a8cc;
+}
+
+/* =========================================
+   6. PROJECTS
+   ========================================= */
+#projects {
+  min-height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 80px;
+}
+
+#projects h2 {
+  width: 100%;
+  text-align: left;
+}
+
+#projects h2::after {
+  width: 100px;
+}
+
+#projects article {
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* ترتيب محتوى الكرت وتوسيطه */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#projects article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#projects article p {
+  flex-grow: 1;
+}
+
+#projects img {
+  display: block;
+  width: 70%;
+  height: 180px;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+/* زر View on GitHub */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: #00a8cc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: normal;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#projects .project-link img {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.project-link:hover {
+  background: #0b2545;
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   7. CONTACT
+   ========================================= */
+#contact {
+  min-height: 60vh;
+}
+
+.contact-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+/* الفورم */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 25px;
+  text-align: left;
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: #0b2545;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #00a8cc;
+  box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.2);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #00a8cc;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #0b2545;
+  transform: translateY(-3px);
+}
+
+/* أيقونات التواصل */
+.contact-icons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-icons a:hover {
+  transform: translateY(-4px);
+  border-color: #00a8cc;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.contact-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* حركة الطفو لأيقونات التواصل */
+.contact-icons li {
+  animation: float 2s ease-in-out infinite;
+}
+
+.contact-icons li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.contact-icons li:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+  min-height: 140px;
+  display: flex;
+  align-items: center;          /* توسيط عمودي */
+  justify-content: center;      /* توسيط أفقي */
+  background: #0b2545;
+  color: #fff;
+}
+
+/* =========================================
+   9. RESPONSIVE (الشاشات الصغيرة)
+   ========================================= */
+@media (max-width: 600px) {
+  .navbar { justify-content: center; }
+  .menu   { justify-content: center; }
+  .menu a { font-size: 1.1rem; }
+  .logo   { font-size: 1.4rem; }
+
+  section {
+    scroll-margin-top: 150px;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+right: 20px;
+bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 60px;
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+    box-shadow: none;
+
+  transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: scale(1.6);
+}
+/* =========================================
+   FOCUS (للتنقل بالكيبورد)
+   ========================================= */
+.cv-btn:focus-visible,
+.project-link:focus-visible,
+.contact-icons a:focus-visible,
+.contact-form button:focus-visible,
+#skills a:focus-visible,
+.back-to-top:focus-visible {
+  outline: 3px solid #007a99;
+  outline-offset: 3px;
+}
+
+/* بالـheader الخلفية كحلية، فالإطار لازم يكون أبيض */
+.logo:focus-visible,
+.menu a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
