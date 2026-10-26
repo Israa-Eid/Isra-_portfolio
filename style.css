@@ -356,7 +356,7 @@ header {
    5. SKILLS
    ========================================= */
 #skills {
-  min-height: 60vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;       /* العنوان فوق والأيقونات تحته */
 }
@@ -371,7 +371,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   margin-top: auto;
 }
 
