@@ -165,8 +165,10 @@ header {
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to   { width: 28ch; }
+  0%   { width: 0; }
+  60%  { width: 28ch; }
+  85%  { width: 28ch; }
+  100% { width: 0; }
 }
 
 @keyframes blink {
