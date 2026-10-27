@@ -175,6 +175,14 @@ header {
   50% { border-color: transparent; }
 }
 
+/* إذا الأنيميشن مطفي عند المستخدم، بيظهر النص كامل */
+@media (prefers-reduced-motion: reduce) {
+  .role {
+    animation: none;
+    width: auto;
+    border-right: none;
+  }
+}
 .short-info {
   margin-top: 10px;
   max-width: 500px;
