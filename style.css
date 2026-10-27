@@ -103,7 +103,19 @@ header {
 .menu a.active {
   color: #00a8cc;
 }
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
 
+  .menu {
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 8px 18px;
+  }
+}
 /* =========================================
    3. HERO
    ========================================= */
