@@ -160,8 +160,9 @@ header {
   margin: 10px 0;
   font-weight: bold;
   width: 0;
-  animation: typing 4s steps(28) forwards,
-             blink 0.7s step-end infinite;
+   animation: typing 6s steps(28) infinite,
+           blink 0.7s step-end infinite;
+
 }
 
 @keyframes typing {
